@@ -28,9 +28,9 @@ resource "aws_instance" "od" {
 
 # Adds tags to the ec2 servers. 
 resource "aws_ec2_tag" "example" {
-  resource_id = aws_vpn_connection.example.transit_gateway_attachment_id
+  resource_id = ( 10 resources  = 6 OD + 4 Spot )
   key         = "Name"
-  value       = "Hello World"
+  value       = "${var.COMPONENT}-${var.ENV}"
 }
 
 
