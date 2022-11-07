@@ -26,6 +26,14 @@ resource "aws_instance" "od" {
   }
 }
 
+# Adds tags to the ec2 servers. 
+resource "aws_ec2_tag" "example" {
+  resource_id = aws_vpn_connection.example.transit_gateway_attachment_id
+  key         = "Name"
+  value       = "Hello World"
+}
+
+
 
 # provisioner "remote-exec" {
   
