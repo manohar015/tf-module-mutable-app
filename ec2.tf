@@ -2,11 +2,14 @@ resource "aws_spot_instance_request" "spot" {
   ami                       = data.aws_ami.my_ami.id
   instance_type             = "t3.micro"
   wait_for_fulfillment      = true 
-  vpc_security_group_ids    = [aws_security_group.allow_ssh.id]
+#   vpc_security_group_ids    = [aws_security_group.allow_ssh.id]
 
   tags = {
     Name = "var.COMPONENT"
   }
+}
+
+
 
   provisioner "remote-exec" {
   
@@ -22,5 +25,4 @@ resource "aws_spot_instance_request" "spot" {
       "ansible-pull -U https://github.com/b50-clouddevops/ansible.git -e COMPONENT=${var.COMPONENT} -e ENV=dev -e APP_VERSION=${var.APP_VERSION} roboshop-pull.yml"
     ]
   }
-}
 

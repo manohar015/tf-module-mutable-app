@@ -18,7 +18,7 @@ data "terraform_remote_state" "alb" {
   }
 }
 
-# To read the data from the ALB state file
+# DataSource to search the ami with given criteria.
 data "aws_ami" "my_ami" {
   most_recent      = true
   name_regex       = "b50-bash-with-ansible"
