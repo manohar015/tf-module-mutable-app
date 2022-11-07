@@ -12,9 +12,9 @@ resource "aws_security_group" "allow_app" {
   }
 
   ingress {
-    description      = "Application Port"
-    from_port        = var.APP_PORT
-    to_port          = var.APP_PORT
+    description      = "SSH Port"
+    from_port        = 22
+    to_port          = 22
     protocol         = "tcp"
     cidr_blocks      = [data.terraform_remote_state.vpc.outputs.VPC_CIDR, data.terraform_remote_state.vpc.outputs.DEAFULT_VPC_CIDR]
   }
@@ -27,7 +27,7 @@ resource "aws_security_group" "allow_app" {
   }
 
   tags = {
-    Name = "allow_${var.COMPONENT}"
+    Name = "roboshop-${var.COMPONENT}-${var.ENV}"
   }
 }
 
