@@ -33,7 +33,7 @@ locals {
 # Adds tags to the ec2 servers. 
 resource "aws_ec2_tag" "example" {
   count       = var.SPOT_INSTANCE_COUNT + var.OD_INSTANCE_COUNT
-  resource_id = elemnt(local.ALL_INSTANCE_IDS, count.index)
+  resource_id = element(local.ALL_INSTANCE_IDS, count.index)
   key         = "Name"
   value       = "${var.COMPONENT}-${var.ENV}"
 }
