@@ -5,7 +5,7 @@ resource "aws_spot_instance_request" "spot" {
   instance_type             = var.INSTANCE_TYPE
   wait_for_fulfillment      = true 
   vpc_security_group_ids    = [aws_security_group.allow_ssh.id]
-  subnet_id                 = 
+  subnet_id                 = element(data.terrafor)
 
   tags = {
     Name = "${var.COMPONENT}-${var.ENV}"
