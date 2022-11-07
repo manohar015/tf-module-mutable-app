@@ -1,4 +1,4 @@
-# Creates spot 
+# Creates spot instances
 resource "aws_spot_instance_request" "spot" {
   count                     = var.SPOT_INSTANCE_COUNT  
   ami                       = data.aws_ami.my_ami.id
@@ -11,6 +11,18 @@ resource "aws_spot_instance_request" "spot" {
   }
 }
 
+
+# Creates On-Demand Servers
+resource "aws_instance" "od" {
+  count                     = var.SPOT_INSTANCE_COUNT 
+  ami                       = data.aws_ami.my_ami.id
+  instance_type             = var.INSTANCE_TYPE
+  vpc_security_group_ids    = [aws_security_group.allow_ssh.id]
+
+  tags     = {
+    Name = "${var.COMPONENT}-${var.ENV}"
+  }
+}
 
 
 # provisioner "remote-exec" {
