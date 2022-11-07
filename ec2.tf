@@ -28,7 +28,8 @@ resource "aws_instance" "od" {
 
 # Adds tags to the ec2 servers. 
 resource "aws_ec2_tag" "example" {
-  resource_id = 
+  count       = var.SPOT_INSTANCE_COUNT + var.OD_INSTANCE_COUNT
+  resource_id = concat()
   key         = "Name"
   value       = "${var.COMPONENT}-${var.ENV}"
 }
