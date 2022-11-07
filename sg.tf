@@ -5,10 +5,10 @@ resource "aws_security_group" "allow_app" {
 
   ingress {
     description      = "Application Port"
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
+    from_port        = var.APP_PORT
+    to_port          = var.APP_PORT
+    protocol         = "tcp"
+    cidr_blocks      = [data.terraform_remote_state.vpc.outputs.]
   }
 
   egress {
