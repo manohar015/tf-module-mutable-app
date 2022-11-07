@@ -17,3 +17,10 @@ data "terraform_remote_state" "alb" {
     region = "us-east-1"
   }
 }
+
+# To read the data from the ALB state file
+data "aws_ami" "my_ami" {
+  most_recent      = true
+  name_regex       = "b50-bash-with-ansible"
+  owners           = ["self"]
+}
