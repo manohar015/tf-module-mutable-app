@@ -10,6 +10,6 @@ resource "aws_lb_target_group" "app" {
 # Enroll Instances to the above target group 
 resource "aws_lb_target_group_attachment" "attach-instance" {
   target_group_arn = aws_lb_target_group.app.arn
-  target_id        = element(local.ALL_INSTANCE_IDS}
-  port             = 80
+  target_id        = element(local.ALL_INSTANCE_IDS, count.index)
+  port             = 8080
 }
