@@ -24,3 +24,12 @@ data "aws_ami" "my_ami" {
   name_regex       = "b50-bash-with-ansible"
   owners           = ["self"]
 }
+
+# Data blocks to retrieve secrets from aws security manager
+data "aws_secretsmanager_secret" "secrets" {
+  name = "roboshop/secrets"
+}
+
+data "aws_secretsmanager_secret_version" "secrets" {
+  secret_id = data.aws_secretsmanager_secret.secrets.id
+}
