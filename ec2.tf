@@ -12,7 +12,6 @@ resource "aws_spot_instance_request" "spot" {
   }
 }
 
-
 # Creates On-Demand Servers
 resource "aws_instance" "od" {
   count                     = var.OD_INSTANCE_COUNT 
