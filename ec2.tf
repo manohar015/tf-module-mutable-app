@@ -27,6 +27,7 @@ resource "aws_instance" "od" {
 
 locals {
    ALL_INSTANCE_IDS =  concat(aws_spot_instance_request.spot.*.spot_instance_id, aws_instance.od.*.id) 
+   ALL_INSTANCE_PRIVATE_IPS = concat(aws_spot_instance_request.spot.*.spot_instance_id, aws_instance.od.*.id) 
 }
 
 # Adds tags to the ec2 servers. 
