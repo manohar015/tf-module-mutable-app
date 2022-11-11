@@ -5,7 +5,7 @@ provisioner "remote-exec" {
     type     = "ssh"
     user     = "centos"
     password = "DevOps321"
-    host     = 
+    host     = local.ALL_INSTANCE_PRIVATE_IPS
   }
 
     inline = [
