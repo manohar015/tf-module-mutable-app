@@ -25,7 +25,8 @@ resource "aws_lb_listener_rule" "app_rule" {
   }
 
   condition {
-    path_pattern {
-      values = ["/static/*"]
+    host_header {
+      values = ["${var.COMPONENT}-${var.ENV}.${PUBLIC_HOSTEDZONE_NAME"]
     }
   }
+}
