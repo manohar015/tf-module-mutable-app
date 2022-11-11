@@ -16,4 +16,4 @@ resource "null_resource" "application_deploy" {
     }
 
 
-# Note: Provisioners by default are create time provisioners, which means only during the creation they will run. When you run it again for the second time, they won't run. But here in our case, it's an application deployer, which has to run irrespective of the success/failure/parti
+# Note: Provisioners by default are create time provisioners, which means only during the creation they will run. When you run it again for the second time, they won't run. But here in our case, it's an application deployer, which has to run irrespective of the success/failure/partial state of the previous run.
