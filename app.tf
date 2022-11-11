@@ -3,8 +3,8 @@ resource "null_resource" {
 provisioner "remote-exec" {  
   connection {
     type     = "ssh"
-    user     = "centos"
-    password = "DevOps321"
+    user     = jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["MYSQL_USERNAME"]
+    password = jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["MYSQL_USERNAME"]
     host     = element(local.ALL_INSTANCE_PRIVATE_IPS, count.index)
   }
 
