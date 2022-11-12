@@ -15,12 +15,16 @@ resource "aws_lb_target_group_attachment" "attach-instance" {
 }
 
 
-# Genera
+# Generating the random integer for rule ID used by listender rule
+resource "random_integer" "rule_number" {
+  min = 100
+  max = 500
+}
 
 # Creates the lister-rule as per the component that we run against.
 resource "aws_lb_listener_rule" "app_rule" {
   listener_arn = data.terraform_remote_state.alb.outputs.PRIVATE_LISTERNER_ARN
-  priority     = 100 # Every rule that's created should have a specic priority number, which should be unique to each and every rule
+  priority     = random_integer.rule_number.result
 
   action {
     type             = "forward"
