@@ -1,7 +1,11 @@
 resource "aws_route53_record" "record" {
   zone_id = data.terraform_remote_state.vpc.outputs.PRIVATE_HOSTEDZONE_ID
   name    = "${var.COMPONENT}-dev.roboshop.internal"
-  type    = "A"
+  type    = "CNAME"
   ttl     = 10
-  records = [aws_spot_instance_request.spot_worker.private_ip]
+  records = [data.terraform_remote_state.alb.outputs.PRIVATE_ALB_ADDRESS]
+
 }
+
+
+internal-roboshop-private-316722189.us-east-1.elb.amazonaws.com   --->   cart-dev.roboshop.internal 
