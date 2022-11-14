@@ -61,3 +61,4 @@ resource "aws_lb_listener" "public_lb_listener" {
     target_group_arn = aws_lb_target_group.app.arn
   }
 }
+
