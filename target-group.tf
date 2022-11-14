@@ -49,26 +49,7 @@ resource "aws_lb_listener_rule" "app_rule" {
   }
 }
 
-# Creates the lister-rule as per the frontend component.
-# resource "aws_lb_listener_rule" "public_app_rule" {
-#   count        = var.LB_TYPE == "internal" ? 0 : 1
-
-#   listener_arn = data.terraform_remote_state.alb.outputs.PUBLIC_LISTERNER_ARN
-#   priority     = random_integer.rule_number.result
-
-#   action {
-#     type             = "forward"
-#     target_group_arn = aws_lb_target_group.app.arn
-#   }
-
-#   condition {
-#     host_header {
-#       values = ["${var.COMPONENT}-${var.ENV}.${data.terraform_remote_state.vpc.outputs.PUBLIC_HOSTEDZONE_NAME}"]
-#     }
-#   }
-# }
-
-# Public Listener , creates only if the LB_TYPE is Public
+# Public Listener , creates only if the LB_TYPE is not internal
 resource "aws_lb_listener" "public_lb_listener" {
   count             = var.LB_TYPE == "internal" ? 0 : 1
   load_balancer_arn = data.terraform_remote_state.alb.outputs.PUBLIC_ALB_ARN
