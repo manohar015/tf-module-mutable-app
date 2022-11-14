@@ -18,6 +18,16 @@ data "terraform_remote_state" "alb" {
   }
 }
 
+# To read the data from the ALB state file
+data "terraform_remote_state" "db" {
+  backend = "s3"
+  config = {
+    bucket = "b50-tf-state-bucket"
+    key    = "databases/${var.ENV}/terrafom.tfstate"
+    region = "us-east-1"
+  }
+}
+
 # DataSource to search the ami with given criteria.
 data "aws_ami" "my_ami" {
   most_recent      = true
