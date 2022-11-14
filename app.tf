@@ -14,7 +14,7 @@ resource "null_resource" "application_deploy" {
 
         inline = [
 
-        "ansible-pull -U https://github.com/b50-clouddevops/ansible.git -e COMPONENT=${var.COMPONENT} -e ENV=dev -e APP_VERSION=${var.APP_VERSION} -e MONGO_URL=${data.terraform_remote_state.db.outouts.MONGODB_ENDPOINT}  roboshop-pull.yml"
+        "ansible-pull -U https://github.com/b50-clouddevops/ansible.git -e COMPONENT=${var.COMPONENT} -e ENV=dev -e APP_VERSION=${var.APP_VERSION} -e MONGO_URL=${data.terraform_remote_state.db.outputs.MONGODB_ENDPOINT}  roboshop-pull.yml"
             ]
         }
     }
