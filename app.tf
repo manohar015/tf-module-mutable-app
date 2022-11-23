@@ -23,3 +23,8 @@ resource "null_resource" "application_deploy" {
 # Note: Provisioners by default are create time provisioners, which means only during the creation they will run. When you run it again for the second time, they won't run. But here in our case, it's an application deployer, which has to run irrespective of the success/failure/partial state of the previous run.
 
 # The timestamp() function in the interpolation syntax will return an ISO 8601 formatted string, which looks like this 2019-02-06T23:22:28Z .
+
+# Rolling Update :  
+#  1.0  2.0 3.0 
+
+#  1.1  2.2 3.3
