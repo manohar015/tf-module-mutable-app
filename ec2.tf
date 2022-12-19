@@ -1,4 +1,8 @@
 # Creates spot instances
+output "name" {
+  value = "Hellow world"
+  
+}
 resource "aws_spot_instance_request" "spot" {
   count                     = var.SPOT_INSTANCE_COUNT  
   ami                       = data.aws_ami.my_ami.id
@@ -12,10 +16,7 @@ resource "aws_spot_instance_request" "spot" {
     Name = "${var.COMPONENT}-${var.ENV}"
   }
 }
-output "name" {
-  value = "Hellow world"
-  
-}
+
 # Creates On-Demand Servers
 resource "aws_instance" "od" {
   count                     = var.OD_INSTANCE_COUNT 
