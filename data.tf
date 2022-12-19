@@ -2,7 +2,7 @@
 data "terraform_remote_state" "vpc" {
   backend = "s3"
   config = {
-    bucket = "b50-tf-state-bucket"
+    bucket = "manohar-b50-tf-state-bucket"
     key    = "vpc/${var.ENV}/terrafom.tfstate"
     region = "us-east-1"
   }
@@ -12,7 +12,7 @@ data "terraform_remote_state" "vpc" {
 data "terraform_remote_state" "alb" {
   backend = "s3"
   config = {
-    bucket = "b50-tf-state-bucket"
+    bucket = "manohar-b50-tf-state-bucket"
     key    = "alb/${var.ENV}/terrafom.tfstate"
     region = "us-east-1"
   }
@@ -22,7 +22,7 @@ data "terraform_remote_state" "alb" {
 data "terraform_remote_state" "db" {
   backend = "s3"
   config = {
-    bucket = "b50-tf-state-bucket"
+    bucket = "manohar-b50-tf-state-bucket"
     key    = "databases/${var.ENV}/terrafom.tfstate"
     region = "us-east-1"
   }
@@ -31,7 +31,7 @@ data "terraform_remote_state" "db" {
 # DataSource to search the ami with given criteria.
 data "aws_ami" "my_ami" {
   most_recent      = true
-  name_regex       = "b50-bash-with-ansible"
+  name_regex       = "Boto_Image"
   owners           = ["self"]
 }
 
